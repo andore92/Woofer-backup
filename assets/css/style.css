@@ -40,25 +40,26 @@ body{
 }
 #mainContent{
 	background-color: white; 
-	width: 60%;
+	width: 80%;
 	border-color: #26a69a;
 	border-width: 1px;
 	border-style: solid;
 }
 #dogList {
-	width: 60%;
+	height: 50em; 
+	overflow-y: auto;
 }
 #map{
-	margin: 10px;
 	height: 50em;
 }
+
 #submit-info{
 	margin: 20px;
 }
 #pet-image {
 	border-radius: 25px;
-	height: 200px;
-	width: 200px;
+	height: 150px;
+	width: 150px;
 	padding: 5px;
 	margin: 20px;
 }

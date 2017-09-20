@@ -37,7 +37,9 @@ function renderDogs() {
 
 	var userCount = $("#search_limit").val();
 	var searchCount = "count=" + userCount + "&";
-
+	
+	var userAnimal = $("#dog_type").val();
+	var searchAnimal = "animal="+ userAnimal + "&";
 	
 	var userSex = $("#dog_gender").val();
 	var searchSex = "sex="+ userSex + "&";
@@ -52,7 +54,7 @@ function renderDogs() {
 	var userZip = $("#zip_code").val();
 	var searchLocation = "location=" + userZip  + "&";
 
-	var fullURL = baseURL+reqType+dogSearch+searchCount+searchLocation
+	var fullURL = baseURL+reqType+searchAnimal+searchCount+searchLocation
 	+searchSex+searchSize+searchAge+yourKey+format;
 	$.ajax({ 
 	  method: 'GET', 
@@ -137,7 +139,7 @@ function renderDogs() {
 			
 			anchorTag.append(petImage);
 				 
-			petDiv.addClass("col sm6")
+			petDiv.addClass("col s6")
 			$("#dogList").append(petDiv);
 			
 			var modalDiv = $("<div>").attr("id", "modal"+i)
@@ -294,30 +296,24 @@ function shelterFilter() {
 	
 	
 	
-	var petButton = $("<a>").text(petName);
-
-	var petImage = $("<img>");
-	
-
-	petImage.attr("src", foundPetImage)
-	
-
-
-	petImage.attr("id", "pet-image")
-	petImage.attr("alt", petName)
-	petButton.addClass("waves-effect waves-light btn")
-	petButton.attr("id", "pet-info")
-	petButton.attr("href", "#modal"+ i)
-	petImage.attr("href", "#modal"+ i)
-	petImage.addClass("btn")
-	
-	
-	// petDiv.append(p);
-	petDiv.append(petImage);
-	petDiv.append(petButton);
+			var petImage = $("<img>");
+			var anchorTag = $("<a>");
+			
+			petDiv.append(anchorTag);
+			anchorTag.attr("href", "#modal"+ i)
+			
+			petImage.attr("src", foundPetImage);
+			petImage.attr("id", "pet-image")
+			petImage.attr("alt", petName)
+			petImage.addClass("pet-image")
+			petImage.addClass("btn")
+			
+			anchorTag.append(petImage);
+				 
+			petDiv.addClass("col s6")
 		 
 		 
-	petDiv.addClass("col lg3")
+	petDiv.addClass("col s3")
 	 $("#dogList").append(petDiv);
 
 	 var modalDiv = $("<div>").attr("id", "modal"+i)
@@ -457,7 +453,7 @@ function favSearch(shelterID) {
 					petDiv.append(petButton);
 						 
 						 
-					petDiv.addClass("col lg3")
+					petDiv.addClass("col s6");
 					 $("#dogList").append(petDiv);
 					
 					var modalDiv = $("<div>").attr("id", "modal"+i)
@@ -543,6 +539,7 @@ function favSearch(shelterID) {
 	  	// empty mainContent div and append a div for the map to it
 		$("#mainContent").empty();
 		var mapDiv = $("<div>").attr("id", "map");
+		mapDiv.addClass("col s6");
 		$("#mainContent").append(mapDiv);
 
 		// run function to display map
@@ -591,7 +588,12 @@ $("#submit-info").on("click", function() {
 	// empty mainContent div and append a div for the map to it
 	$("#mainContent").empty();
 	var mapDiv = $("<div>").attr("id", "map");
-	$("#mainContent").append(mapDiv);
+	mapDiv.addClass("col s6");
+	var dogList = $("<div>").attr("id", "dogList");
+	dogList.addClass("col s6");
+	$("#mainContent").append(mapDiv)
+					.append(dogList);
+
 
 	// run function to display map
 	googleMap.initMap();
