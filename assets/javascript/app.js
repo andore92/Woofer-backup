@@ -118,52 +118,38 @@ function renderDogs() {
 			
 			
 			if (foundPetMedia.hasOwnProperty("photos") ) {
-				
 				var foundPetImage = foundPetMedia.photos.photo[2].$t
 			} else {
 				var foundPetImage = "assets/images/no-image-found.gif"
 			}
 			
-			
-			
-			var petButton = $("<a>").text(petName);
-
 			var petImage = $("<img>");
+			var anchorTag = $("<a>");
 			
-
-			petImage.attr("src", foundPetImage)
+			petDiv.append(anchorTag);
+			anchorTag.attr("href", "#modal"+ i)
 			
-
-
+			petImage.attr("src", foundPetImage);
 			petImage.attr("id", "pet-image")
 			petImage.attr("alt", petName)
-			petButton.addClass("waves-effect waves-light btn")
-			petButton.attr("id", "pet-info")
-			petButton.attr("href", "#modal"+ i)
-			petImage.attr("href", "#modal"+ i)
+			petImage.addClass("pet-image")
 			petImage.addClass("btn")
 			
-			
-			// petDiv.append(p);
-			petDiv.append(petImage);
-			petDiv.append(petButton);
+			anchorTag.append(petImage);
 				 
-				 
-			petDiv.addClass("col lg3")
-			 $("#dogList").append(petDiv);
+			petDiv.addClass("col sm6")
+			$("#dogList").append(petDiv);
 			
 			var modalDiv = $("<div>").attr("id", "modal"+i)
-		
 			modalDiv.addClass("modal")
 			
-			
 			var modalContent = $("<div>").attr("id", "modalContent"+i)
-			
 			modalContent.addClass("modal-content")
 			// modalContent.attr("id", "dog-"+i)
 
 			var modalFooter = $("<div>")
 			modalFooter.addClass("modal-footer")
+			
 			var modalA = $("<a>").text("Close")
 			modalA.addClass("modal-action modal-close waves-effect waves-green btn-flat")
 			modalFooter.append(modalA)
